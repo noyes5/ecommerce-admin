@@ -24,19 +24,19 @@ export const ProductClient: React.FC<ProductClientProps> = ({ data }) => {
     <>
       <div className="flex items-center justify-between">
         <Heading
-          title={`Products (${data.length})`}
-          description="Manage products for your store"
+          title={`상품 관리 (${data.length})`}
+          description="상품을 관리하는 페이지입니다."
         />
         <Button
           onClick={() => router.push(`/${params.storeId}/products/new`)}
         >
           <Plus className="mr-2 h-4 w-4" />
-          Add New
+          상품 생성
         </Button>
       </div>
       <Separator />
       <DataTable searchKey="name" columns={columns} data={data} />
-      <Heading title="API" description="API calls for Products" />
+      <Heading title="API" description="상품 API 목록" />
       <Separator />
       <ApiList entityName="products" entityIdName="productId" />
     </>

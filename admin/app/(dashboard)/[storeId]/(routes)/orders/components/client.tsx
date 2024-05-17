@@ -14,8 +14,8 @@ export const OrderClient: React.FC<OrderClientProps> = ({ data }) => {
   return (
     <>
       <Heading
-        title={`Orders (${data.length})`}
-        description="Manage orders for your store"
+        title={`주문 관리 (${data.length})`}
+        description="주문 관리 페이지입니다."
       />
       <Separator />
       <DataTable searchKey="products" columns={columns} data={data} />

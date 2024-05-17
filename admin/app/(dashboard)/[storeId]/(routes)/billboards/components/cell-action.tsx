@@ -31,7 +31,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
 
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id);
-    toast.success("빌보드 ID가 복사되었습니다.");
+    toast.success("메인 배너 ID가 복사되었습니다.");
   };
 
   const onDelete = async () => {
@@ -39,9 +39,9 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
       setLoading(true);
       await axios.delete(`/api/${params.storeId}/billboards/${data.id}`);
       router.refresh();
-      toast.success("Billboard 삭제됨");
+      toast.success("메인 배너가 삭제되었습니다.");
     } catch (error) {
-      toast.error("Make sure you removed all categories using this billboard first.");
+      toast.error("먼저 배너 이미지와 관련된 카테고리를 삭제해주세요.");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -64,14 +64,14 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>실행</DropdownMenuLabel>
+          <DropdownMenuLabel>항목</DropdownMenuLabel>
           <DropdownMenuItem onClick={() => onCopy(data.id)}>
             <Copy className="mr-2 h-4 w-4" />
-            아이디 복사하기
+            ID 복사
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => router.push(`/${params.storeId}/billboards/${data.id}`)}>
             <Edit className="mr-2 h-4 w-4" />
-            업데이트 하기
+            수정
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setOpen(true)}>
             <Trash className="mr-2 h-4 w-4" />

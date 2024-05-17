@@ -53,9 +53,9 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "카테고리 수정" : "카테고리 만들기";
-  const description = initialData ? "카테고리 수정" : "카테고리를 생성합니다.";
-  const toastMessage = initialData ? "카테고리 업데이트됨" : "카테고리 생성됨";
+  const title = initialData ? "카테고리 수정" : "카테고리 생성";
+  const description = initialData ? "카테고리를 수정합니다." : "카테고리를 생성합니다.";
+  const toastMessage = initialData ? "카테고리가 업데이트되었습니다." : "카테고리가 생성되었습니다.";
   const action = initialData ? "저장" : "생성";
 
   const form = useForm<CategoryFormValues>({
@@ -81,7 +81,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
       router.push(`/${params.storeId}/categories`);
       toast.success(toastMessage);
     } catch (error) {
-      toast.error("Something went wrong.");
+      toast.error("예상치 못한 오류가 발생했습니다.");
     } finally {
       setLoading(false);
     }
@@ -95,10 +95,10 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
       );
       router.refresh();
       router.push(`/${params.storeId}/categories`);
-      toast.success("카테고리 삭제됨");
+      toast.success("카테고리가 삭제되었습니다.");
     } catch (error) {
       toast.error(
-        "Make sure you removed all products using this category first."
+        "먼저 카테고리와 관련된 상품들을 삭제해주세요."
       );
     } finally {
       setLoading(false);
@@ -139,11 +139,11 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>이름</FormLabel>
+                  <FormLabel>카테고리 이름</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="카테고리 이름"
+                      placeholder="ex) 상의"
                       {...field}
                     />
                   </FormControl>
@@ -156,7 +156,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
               name="billboardId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Billboard</FormLabel>
+                  <FormLabel>배너 선택</FormLabel>
                   <Select
                     disabled={loading}
                     onValueChange={field.onChange}
@@ -167,7 +167,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
                       <SelectTrigger>
                         <SelectValue
                           defaultValue={field.value}
-                          placeholder="Select a billboard"
+                          placeholder="배너를 선택하세요."
                         />
                       </SelectTrigger>
                     </FormControl>

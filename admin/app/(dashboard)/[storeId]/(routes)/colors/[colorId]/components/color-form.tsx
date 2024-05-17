@@ -46,9 +46,9 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "색상 수정" : "색상 만들기";
-  const description = initialData ? "색상 수정" : "색상을 생성합니다.";
-  const toastMessage = initialData ? "색상 업데이트됨" : "색상 생성됨";
+  const title = initialData ? "색상 수정" : "색상 생성";
+  const description = initialData ? "색상을 수정합니다." : "색상을 생성합니다.";
+  const toastMessage = initialData ? "색상이 업데이트되었습니다." : "색상이 생성되었습니다.";
   const action = initialData ? "저장" : "생성";
 
   const form = useForm<ColorFormValues>({
@@ -74,7 +74,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
       router.push(`/${params.storeId}/colors`);
       toast.success(toastMessage);
     } catch (error) {
-      toast.error("Something went wrong.");
+      toast.error("예상치 못한 오류가 발생했습니다.");
     } finally {
       setLoading(false);
     }
@@ -86,9 +86,9 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
       await axios.delete(`/api/${params.storeId}/colors/${params.colorId}`);
       router.refresh();
       router.push(`/${params.storeId}/colors`);
-      toast.success("Color 삭제됨");
+      toast.success("색상이 삭제되었습니다.");
     } catch (error) {
-      toast.error("Make sure you removed all products using this color first.");
+      toast.error("먼저 색상과 관련된 상품들을 삭제해주세요.");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -128,11 +128,11 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>이름</FormLabel>
+                  <FormLabel>색상 이름</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="컬러 이름"
+                      placeholder="ex) Brown"
                       {...field}
                     />
                   </FormControl>
@@ -145,12 +145,12 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
               name="value"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Value</FormLabel>
+                  <FormLabel>색상 코드값</FormLabel>
                   <FormControl>
                     <div className="flex items-center gap-x-4">
                       <Input
                         disabled={loading}
-                        placeholder="Color value" 
+                        placeholder="ex) #999999" 
                         {...field}
                       />
                       <div 

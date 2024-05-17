@@ -39,9 +39,9 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
       setLoading(true);
       await axios.delete(`/api/${params.storeId}/categories/${data.id}`);
       router.refresh();
-      toast.success("카테고리 삭제됨");
+      toast.success("카테고리가 삭제되었습니다.");
     } catch (error) {
-      toast.error("Make sure you removed all products using this category first.");
+      toast.error("먼저 카테고리와 관련된 상품들을 삭제해주세요.");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -64,14 +64,14 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>실행</DropdownMenuLabel>
+          <DropdownMenuLabel>항목</DropdownMenuLabel>
           <DropdownMenuItem onClick={() => onCopy(data.id)}>
             <Copy className="mr-2 h-4 w-4" />
-            아이디 복사하기
+            ID 복사
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => router.push(`/${params.storeId}/categories/${data.id}`)}>
             <Edit className="mr-2 h-4 w-4" />
-            업데이트 하기
+            수정
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setOpen(true)}>
             <Trash className="mr-2 h-4 w-4" />

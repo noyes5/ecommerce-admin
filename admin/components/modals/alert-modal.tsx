@@ -30,17 +30,17 @@ export const AlertModal: React.FC<AlertModalProps> = ({
 
   return (
     <Modal
-      title="정말 삭제하실 건가요?"
-      description="상점 삭제를 한 뒤에는 되돌릴 수 없습니다."
+      title="항목 삭제"
+      description="삭제된 내역은 복구할 수 없습니다. 정말 삭제하시겠습니까?"
       isOpen={isOpen}
       onClose={onClose}
     >
       <div className="pt-6 space-x-2 flex items-center justify-end w-full">
         <Button disabled={loading} variant="outline" onClick={onClose}>
-          취소하기
+          취소
         </Button>
         <Button disabled={loading} variant="destructive" onClick={onConfirm}>
-          계속하기
+          확인
         </Button>
       </div>
 

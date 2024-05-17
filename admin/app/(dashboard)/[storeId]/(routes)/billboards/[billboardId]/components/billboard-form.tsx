@@ -23,7 +23,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { AlertModal } from "@/components/modals/alert-modal";
-import { useOrigin } from "@/hooks/use-origin";
 import ImageUpload from "@/components/ui/image-upload";
 
 const formSchema = z.object({
@@ -46,10 +45,10 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Edit billboard" : "Create billboard";
-  const description = initialData ? "Edit a billboard" : "Add a new billboard";
-  const toastMessage = initialData ? "Billboard updated" : "Billboard created";
-  const action = initialData ? "Save changes" : "Create";
+  const title = initialData ? "배너 이미지 수정" : "배너 이미지 생성";
+  const description = initialData ? "배너 이미지를 수정합니다." : "배너 이미지를 생성합니다.";
+  const toastMessage = initialData ? "배너 이미지가 업데이트되었습니다." : "메인 이미지가 생성되었습니다.";
+  const action = initialData ? "저장" : "생성";
 
   const form = useForm<BillboardFormValues>({
     resolver: zodResolver(formSchema),
@@ -74,7 +73,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
       router.push(`/${params.storeId}/billboards`);
       toast.success(toastMessage);
     } catch (error) {
-      toast.error("Something went wrong.");
+      toast.error("예상치 못한 오류가 발생했습니다.");
     } finally {
       setLoading(false);
     }
@@ -88,10 +87,10 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
       );
       router.refresh();
       router.push(`/${params.storeId}/billboards`);
-      toast.success("Billboard 삭제됨");
+      toast.success("배너 이미지가 삭제되었습니다.");
     } catch (error) {
       toast.error(
-        "Make sure you removed all categories using this billboard first."
+        "먼저 배너 이미지와 관련된 카테고리를 삭제해주세요."
       );
     } finally {
       setLoading(false);
@@ -131,7 +130,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
             name="imageUrl"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Background image</FormLabel>
+                <FormLabel>배경 이미지</FormLabel>
                 <FormControl>
                   <ImageUpload
                     value={field?.value ? [field.value] : []}
@@ -150,11 +149,11 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
               name="label"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Label</FormLabel>
+                  <FormLabel>배너 이미지 이름</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Billboard label"
+                      placeholder="ex) 5월 세일이벤트"
                       {...field}
                     />
                   </FormControl>

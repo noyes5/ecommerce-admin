@@ -14,23 +14,27 @@ export type OrderColumn = {
 
 export const columns: ColumnDef<OrderColumn>[] = [
   {
+    accessorKey: "createdAt",
+    header: "주문 일자",
+  },
+  {
     accessorKey: "products",
-    header: "Products",
+    header: "주문 상품",
   },
   {
     accessorKey: "phone",
-    header: "Phone",
+    header: "휴대폰 번호",
   },
   {
     accessorKey: "address",
-    header: "Address",
+    header: "주소",
   },
   {
     accessorKey: "totalPrice",
-    header: "Total price",
+    header: "주문 금액",
   },
   {
     accessorKey: "isPaid",
-    header: "Paid",
+    header: "지불 여부",
   },
 ];

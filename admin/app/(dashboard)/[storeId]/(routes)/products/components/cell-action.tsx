@@ -39,9 +39,9 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
       setLoading(true);
       await axios.delete(`/api/${params.storeId}/billboards/${data.id}`);
       router.refresh();
-      toast.success("상품 삭제됨");
+      toast.success("상품이 삭제되었습니다.");
     } catch (error) {
-      toast.error("Something went wrong.");
+      toast.error("예상치 못한 오류가 발생했습니다.");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -64,10 +64,10 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>실행</DropdownMenuLabel>
+          <DropdownMenuLabel>항목</DropdownMenuLabel>
           <DropdownMenuItem onClick={() => onCopy(data.id)}>
             <Copy className="mr-2 h-4 w-4" />
-            아이디 복사하기
+            ID 복사
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() =>
@@ -75,7 +75,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
             }
           >
             <Edit className="mr-2 h-4 w-4" />
-            업데이트 하기
+            수정
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setOpen(true)}>
             <Trash className="mr-2 h-4 w-4" />

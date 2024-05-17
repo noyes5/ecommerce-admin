@@ -23,13 +23,13 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
-        <Heading title="DashBoard" description="Overview of your store" />
+        <Heading title="대쉬 보드" description="상점 개요" />
         <Separator />
         <div className="grid gap-4 grid-cols-3">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
-                Total Revenue
+                전체 수익
               </CardTitle>
               <DollarSign className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
@@ -42,7 +42,7 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
-                Sales
+                판매량
               </CardTitle>
               <CreditCard className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
@@ -55,7 +55,7 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
-                Products In Stock
+                재고가 있는 상품
               </CardTitle>
               <Package className="h-4 w-4 text-muted-foreground" />
             </CardHeader>

@@ -54,9 +54,9 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
       setLoading(true);
       await axios.patch(`/api/stores/${params.storeId}`, data);
       router.refresh();
-      toast.success("상점 업데이트 됨");
+      toast.success("상점이름이 업데이트 되었습니다.");
     } catch (error) {
-      toast.error("Something went wrong.");
+      toast.error("예상치 못한 오류가 발생했습니다.");
     } finally {
       setLoading(false);
     }
@@ -68,10 +68,9 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
       await axios.delete(`/api/stores/${params.storeId}`);
       router.refresh();
       router.push("/");
-      toast.success("상점 삭제됨");
+      toast.success("상점이 삭제되었습니다.");
     } catch (error) {
-      toast.error("Make sure you removed all products and categories first.");
-    } finally {
+      toast.error("상품, 카테고리를 지우고 시도하세요.");
       setLoading(false);
       setOpen(false);
     }
@@ -108,11 +107,11 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>이름</FormLabel>
+                  <FormLabel>스토어 이름</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="상점 이름"
+                      placeholder="ex) 신발 가게"
                       {...field}
                     />
                   </FormControl>
@@ -122,7 +121,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
             />
           </div>
           <Button disabled={loading} className="ml-auto" type="submit">
-            설정 저장하기
+            저장
           </Button>
         </form>
       </Form>

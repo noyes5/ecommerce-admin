@@ -52,8 +52,8 @@ export const StoreModal = () => {
 
   return (
     <Modal
-      title="Create store"
-      description="Add a new store to manage products and categories"
+      title="스토어 생성"
+      description="스토어를 생성해서 상품과 카테고리를 관리하세요."
       isOpen={storeModal.isOpen}
       onClose={storeModal.onClose}
     >
@@ -66,11 +66,11 @@ export const StoreModal = () => {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>상점 이름</FormLabel>
+                    <FormLabel>스토어 이름</FormLabel>
                     <FormControl>
                       <Input
                         disabled={loading}
-                        placeholder="E-Commerce"
+                        placeholder="ex) 신발 상점"
                         {...field}
                       />
                     </FormControl>
@@ -84,9 +84,9 @@ export const StoreModal = () => {
                   variant="outline"
                   onClick={storeModal.onClose}
                 >
-                  Cancel
+                  취소
                 </Button>
-                <Button type="submit">Continue</Button>
+                <Button type="submit">생성</Button>
               </div>
             </form>
           </Form>

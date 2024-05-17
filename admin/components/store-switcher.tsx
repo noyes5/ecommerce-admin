@@ -79,9 +79,9 @@ export default function StoreSwitcher({
       <PopoverContent className="w-[200px] p-0">
         <Command>
           <CommandList>
-            <CommandInput placeholder="Search store..." />
-            <CommandEmpty>No store found.</CommandEmpty>
-            <CommandGroup heading="Stores">
+            <CommandInput placeholder="스토어 검색" />
+            <CommandEmpty>스토어가 없습니다.</CommandEmpty>
+            <CommandGroup heading="스토어">
               {formattedItems.map((store) => (
                 <CommandItem
                   key={store.value}
@@ -112,7 +112,7 @@ export default function StoreSwitcher({
                 }}
               >
                 <PlusCircle className="mr-2 h-5 w-5" />
-                Create Store
+                스토어 만들기
               </CommandItem>
             </CommandGroup>
           </CommandList>

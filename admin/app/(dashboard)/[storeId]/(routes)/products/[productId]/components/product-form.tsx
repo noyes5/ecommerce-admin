@@ -71,9 +71,9 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "상품 수정" : "상품 만들기";
-  const description = initialData ? "상품 수정" : "상품을 생성합니다.";
-  const toastMessage = initialData ? "상품 업데이트됨" : "상품 생성됨";
+  const title = initialData ? "상품 수정" : "상품 생성";
+  const description = initialData ? "상품을 수정합니다." : "상품을 생성합니다.";
+  const toastMessage = initialData ? "상품이 업데이트되었습니다." : "상품이 생성되었습니다.";
   const action = initialData ? "저장" : "생성";
 
   const form = useForm<ProductFormValues>({
@@ -110,7 +110,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
       router.push(`/${params.storeId}/products`);
       toast.success(toastMessage);
     } catch (error) {
-      toast.error("Something went wrong.");
+      toast.error("예상치 못한 오류가 발생했습니다.");
     } finally {
       setLoading(false);
     }
@@ -124,10 +124,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
       );
       router.refresh();
       router.push(`/${params.storeId}/products`);
-      toast.success("Product 삭제됨");
+      toast.success("상품이 삭제되었습니다.");
     } catch (error) {
       toast.error(
-        "Something went wrong."
+        "예상치 못한 오류가 발생했습니다."
       );
     } finally {
       setLoading(false);
@@ -167,7 +167,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             name="images"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Images</FormLabel>
+                <FormLabel>상품 이미지</FormLabel>
                 <FormControl>
                   <ImageUpload
                     value={field.value.map((image) => image.url)}
@@ -192,11 +192,11 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>이름</FormLabel>
+                  <FormLabel>상품 이름</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="상품 이름"
+                      placeholder="ex) 티셔츠"
                       {...field}
                     />
                   </FormControl>
@@ -211,7 +211,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                 <FormItem>
                   <FormLabel>가격</FormLabel>
                   <FormControl>
-                    <Input disabled={loading} placeholder="10000" {...field} />
+                    <Input disabled={loading} placeholder="ex) 10000" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -222,7 +222,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               name="categoryId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Category</FormLabel>
+                  <FormLabel>카테고리</FormLabel>
                   <Select
                     disabled={loading}
                     onValueChange={field.onChange}
@@ -233,7 +233,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                       <SelectTrigger>
                         <SelectValue
                           defaultValue={field.value}
-                          placeholder="Select a category"
+                          placeholder="카테고리를 선택하세요."
                         />
                       </SelectTrigger>
                     </FormControl>
@@ -265,7 +265,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                       <SelectTrigger>
                         <SelectValue
                           defaultValue={field.value}
-                          placeholder="Select a size"
+                          placeholder="사이즈를 선택하세요."
                         />
                       </SelectTrigger>
                     </FormControl>
@@ -297,7 +297,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                       <SelectTrigger>
                         <SelectValue
                           defaultValue={field.value}
-                          placeholder="Select a color"
+                          placeholder="색상을 선택하세요."
                         />
                       </SelectTrigger>
                     </FormControl>
@@ -327,10 +327,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                     </FormControl>
                     <div className="space-y-1 leading-none">
                       <FormLabel>
-                        Featured
+                        상품 활성화
                       </FormLabel>
                       <FormDescription>
-                        이 상품은 홈페이지에 판매할 예정입니다.
+                        상품이 판매페이지에서 보여집니다.
                       </FormDescription>
 
                     </div>
@@ -351,10 +351,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                     </FormControl>
                     <div className="space-y-1 leading-none">
                       <FormLabel>
-                        Archived
+                        상품 비활성화
                       </FormLabel>
                       <FormDescription>
-                        이 상품은 스토어 어디에도 보여지지 않습니다.
+                        상품이 비활성화됩니다.
                       </FormDescription>
 
                     </div>

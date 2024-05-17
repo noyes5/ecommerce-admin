@@ -44,9 +44,9 @@ export const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "사이즈 수정" : "사이즈 만들기";
-  const description = initialData ? "사이즈 수정" : "사이즈를 생성합니다.";
-  const toastMessage = initialData ? "사이즈 업데이트됨" : "사이즈 생성됨";
+  const title = initialData ? "사이즈 수정" : "사이즈 생성";
+  const description = initialData ? "사이즈를 수정합니다." : "사이즈를 생성합니다.";
+  const toastMessage = initialData ? "사이즈가 업데이트되었습니다." : "사이즈가 생성되었습니다.";
   const action = initialData ? "저장" : "생성";
 
   const form = useForm<SizeFormValues>({
@@ -72,7 +72,7 @@ export const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
       router.push(`/${params.storeId}/sizes`);
       toast.success(toastMessage);
     } catch (error) {
-      toast.error("Something went wrong.");
+      toast.error("예상치 못한 오류가 발생했습니다.");
     } finally {
       setLoading(false);
     }
@@ -84,9 +84,9 @@ export const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
       await axios.delete(`/api/${params.storeId}/sizes/${params.sizeId}`);
       router.refresh();
       router.push(`/${params.storeId}/sizes`);
-      toast.success("Size 삭제됨");
+      toast.success("사이즈가 삭제되었습니다.");
     } catch (error) {
-      toast.error("Make sure you removed all products using this size first.");
+      toast.error("먼저 사이즈와 관련된 상품들을 삭제해주세요.");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -126,11 +126,11 @@ export const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>이름</FormLabel>
+                  <FormLabel>사이즈 이름</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="사이즈 이름"
+                      placeholder="ex) 라지, Large, 105 등등.."
                       {...field}
                     />
                   </FormControl>
@@ -143,11 +143,11 @@ export const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
               name="value"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Value</FormLabel>
+                  <FormLabel>표기 이름</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Value 이름"
+                      placeholder="ex) S, M, L, 105 등등..."
                       {...field}
                     />
                   </FormControl>

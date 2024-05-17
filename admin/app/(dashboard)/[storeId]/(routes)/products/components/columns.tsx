@@ -19,33 +19,33 @@ export type ProductColumn = {
 export const columns: ColumnDef<ProductColumn>[] = [
   {
     accessorKey: "name",
-    header: "Name",
-  },
-  {
-    accessorKey: "isArchived",
-    header: "Archived",
+    header: "상품 이름",
   },
   {
     accessorKey: "isFeatured",
-    header: "Featured",
+    header: "활성 상품",
+  },
+  {
+    accessorKey: "isArchived",
+    header: "비활성 상품",
   },
   {
     accessorKey: "price",
-    header: "Price",
+    header: "가격",
   },
   {
     accessorKey: "category",
-    header: "Category",
+    header: "카테고리",
   },
   {
     accessorKey: "size",
-    header: "Size",
+    header: "사이즈",
   },
   {
     accessorKey: "color",
-    header: "Color",
+    header: "색상",
     cell: ({ row }) => (
-      <div className="felx items-center gap-x-2">
+      <div className="flex items-center gap-x-2" >
         {row.original.color}
         <div
           className="h-6 w-6 rounded-full border"
@@ -56,7 +56,7 @@ export const columns: ColumnDef<ProductColumn>[] = [
   },
   {
     accessorKey: "createdAt",
-    header: "Date",
+    header: "생성 날짜",
   },
   {
     id: "actions",

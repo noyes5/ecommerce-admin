@@ -14,15 +14,15 @@ export type SizeColumn = {
 export const columns: ColumnDef<SizeColumn>[] = [
   {
     accessorKey: "name",
-    header: "Name",
+    header: "사이즈 이름",
   },
   {
     accessorKey: "value",
-    header: "Value",
+    header: "표기되는 이름",
   },
   {
     accessorKey: "createdAt",
-    header: "Date",
+    header: "생성 날짜",
   },
   {
     id: "actions",
