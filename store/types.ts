@@ -34,6 +34,6 @@ export interface Size {
 
 export interface Color {
   id: string;
-  url: string;
+  name: string;
   value: string;
 }
