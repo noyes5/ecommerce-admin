@@ -16,7 +16,7 @@ const CartPage = () => {
   }, [])
 
   if (!isMounted) {
-    return false;
+    return null;
   }
 
   return ( 
